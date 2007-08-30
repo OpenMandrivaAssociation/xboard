@@ -1,25 +1,22 @@
-%define version 4.2.7
-%define release %mkrel 8
-
 Summary:	An X Window System graphical chessboard
 Name:		xboard
-Version:	%{version}
-Release:	%{release}
+Version:	4.2.7
+Release:	%mkrel 9
 Group:		Games/Boards
 URL:		http://www.tim-mann.org/xboard.html
-License:	GPL
+License:	BSD-like and GPLv2+
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 Source:		ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.bz2
 Source1:	xboard.sh.bz2
 Source2:	xboard-pxboard.man.bz2
 Source3:	XBoard.ad.bz2
-Patch0:		xboard-4.0.5-entry.patch.bz2
-Patch1:		xboard-4.2.7-cmail-quote.patch.bz2
-Patch2:		xboard-4.2.7-lowtime-warning.patch.bz2
-Patch3:		xboard-4.2.7-xvt.patch.bz2
-Patch4:		xboard-4.2.7-xtname.patch.bz2
-Patch5:		xboard-4.2.7-hilight-threatened-pieces.patch.bz2
+Patch0:		xboard-4.0.5-entry.patch
+Patch1:		xboard-4.2.7-cmail-quote.patch
+Patch2:		xboard-4.2.7-lowtime-warning.patch
+Patch3:		xboard-4.2.7-xvt.patch
+Patch4:		xboard-4.2.7-xtname.patch
+Patch5:		xboard-4.2.7-hilight-threatened-pieces.patch
 
 Requires:	chessengine
 Conflicts:	gnuchess <= 5.06
@@ -77,7 +74,7 @@ Exec=%{_gamesbindir}/xboard
 Icon=strategy_section
 Terminal=false
 Type=Application
-Categories=X-MandrivaLinux-MoreApplications-Games-Arcade;Game;ArcadeGame;
+Categories=Game;BoardGame;
 EOF
 
 # remove useless files
@@ -96,7 +93,7 @@ rm -rf %{buildroot}
 
 %files
 %defattr(-,root,root)
-%doc AUTHORS ChangeLog* COPYING COPYRIGHT FAQ NEWS READ_ME zippy.README
+%doc AUTHORS ChangeLog* COPYRIGHT FAQ NEWS READ_ME zippy.README
 %doc *.txt *.html
 %config(noreplace) %{_sysconfdir}/X11/app-defaults/XBoard
 %{_datadir}/applications/mandriva-%{name}.desktop
