@@ -22,7 +22,7 @@ Requires:	chessengine
 Conflicts:	gnuchess <= 5.06
 BuildRequires:	flex
 BuildRequires:	groff-for-man
-BuildRequires:	XFree86-devel
+BuildRequires:	X11-devel
 BuildRequires:	xpm-devel
 
 %description
