@@ -5,7 +5,6 @@ Release:	%mkrel 9
 Group:		Games/Boards
 URL:		http://www.tim-mann.org/xboard.html
 License:	BSD-like and GPLv2+
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
 Source:		ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.bz2
 Source1:	xboard.sh.bz2
