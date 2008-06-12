@@ -81,11 +81,15 @@ EOF
 rm -f %{buildroot}%{_infodir}/dir
 
 %post
+%if %mdkversion < 200900
 %update_menus
+%endif
 %_install_info %{name}.info
 
 %postun
+%if %mdkversion < 200900
 %clean_menus
+%endif
 %_remove_install_info %{name}.info
 
 %clean
