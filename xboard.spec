@@ -11,12 +11,13 @@ Source:		ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.bz2
 Source1:	xboard.sh.bz2
 Source2:	xboard-pxboard.man.bz2
 Source3:	XBoard.ad.bz2
-Patch0:		xboard-4.0.5-entry.patch
+Patch0:		xboard-4.2.7-entry.patch
 Patch1:		xboard-4.2.7-cmail-quote.patch
 Patch2:		xboard-4.2.7-lowtime-warning.patch
 Patch3:		xboard-4.2.7-xvt.patch
 Patch4:		xboard-4.2.7-xtname.patch
 Patch5:		xboard-4.2.7-hilight-threatened-pieces.patch
+Patch6:		xboard-4.2.7-str-fmt.patch
 
 Requires:	chessengine
 Conflicts:	gnuchess <= 5.06
@@ -38,6 +39,7 @@ with chess via email, or with your own saved games.
 %patch3 -p1 -b .xvt
 %patch4 -p1 -b .xtname
 %patch5 -p1 -b .hilite
+%patch6 -p1 -b .str
 
 chmod 0644 ChangeLog*
 
