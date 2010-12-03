@@ -1,9 +1,9 @@
 Summary:	An X Window System graphical chessboard
 Name:		xboard
 Version:	4.2.7
-Release:	%mkrel 12
+Release:	%mkrel 13
 Group:		Games/Boards
-URL:		http://www.tim-mann.org/xboard.html
+URL:		http://www.gnu.org/software/xboard/
 License:	BSD-like and GPLv2+
 BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
 
@@ -23,7 +23,7 @@ Requires:	chessengine
 Conflicts:	gnuchess <= 5.06
 BuildRequires:	flex
 BuildRequires:	groff-for-man
-BuildRequires:	X11-devel
+BuildRequires:	libxaw-devel
 BuildRequires:	xpm-devel
 
 %description
