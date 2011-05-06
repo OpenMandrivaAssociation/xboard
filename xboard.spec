@@ -1,7 +1,7 @@
 Summary:	An X Window System graphical chessboard
 Name:		xboard
 Version:	4.2.7
-Release:	%mkrel 13
+Release:	%mkrel 14
 Group:		Games/Boards
 URL:		http://www.gnu.org/software/xboard/
 License:	BSD-like and GPLv2+
