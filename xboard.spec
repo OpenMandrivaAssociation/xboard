@@ -1,23 +1,14 @@
 Summary:	An X Window System graphical chessboard
 Name:		xboard
-Version:	4.2.7
-Release:	%mkrel 14
+Version:	4.6.2
+Release:	1
 Group:		Games/Boards
 URL:		http://www.gnu.org/software/xboard/
 License:	BSD-like and GPLv2+
-BuildRoot:	%{_tmppath}/%{name}-%{version}-%{release}-root
-
-Source:		ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.bz2
+Source0:	ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:	xboard.sh.bz2
 Source2:	xboard-pxboard.man.bz2
 Source3:	XBoard.ad.bz2
-Patch0:		xboard-4.2.7-entry.patch
-Patch1:		xboard-4.2.7-cmail-quote.patch
-Patch2:		xboard-4.2.7-lowtime-warning.patch
-Patch3:		xboard-4.2.7-xvt.patch
-Patch4:		xboard-4.2.7-xtname.patch
-Patch5:		xboard-4.2.7-hilight-threatened-pieces.patch
-Patch6:		xboard-4.2.7-str-fmt.patch
 
 Requires:	chessengine
 Conflicts:	gnuchess <= 5.06
@@ -33,13 +24,6 @@ with chess via email, or with your own saved games.
 
 %prep
 %setup -q 
-%patch0 -p1 -b .info-entry
-%patch1 -p1 -b .quote
-%patch2 -p1 -b .lowtime
-%patch3 -p1 -b .xvt
-%patch4 -p1 -b .xtname
-%patch5 -p1 -b .hilite
-%patch6 -p1 -b .str
 
 chmod 0644 ChangeLog*
 
@@ -51,7 +35,6 @@ chmod 0644 ChangeLog*
 %make
 
 %install
-rm -rf %{buildroot}
 %makeinstall bindir=%{buildroot}%{_gamesbindir}
 
 mv %{buildroot}%{_gamesbindir}/%{name} %{buildroot}%{_gamesbindir}/%{name}.real
@@ -66,43 +49,22 @@ bzip2 -dc %{SOURCE2} > %{buildroot}%{_mandir}/man6/pxboard.6
 mkdir -p %{buildroot}%{_sysconfdir}/X11/app-defaults
 bzip2 -dc %{SOURCE3} > %{buildroot}%{_sysconfdir}/X11/app-defaults/XBoard
 
-#menu
-mkdir -p %{buildroot}%{_datadir}/applications
-cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=XBoard
-Comment=GUI chessboard game
-Exec=%{_gamesbindir}/xboard
-Icon=strategy_section
-Terminal=false
-Type=Application
-Categories=Game;BoardGame;
-EOF
-
 # remove useless files
 rm -f %{buildroot}%{_infodir}/dir
+%find_lang %{name}
 
-%post
-%if %mdkversion < 200900
-%update_menus
-%endif
-%_install_info %{name}.info
 
-%postun
-%if %mdkversion < 200900
-%clean_menus
-%endif
-%_remove_install_info %{name}.info
-
-%clean
-rm -rf %{buildroot}
-
-%files
-%defattr(-,root,root)
-%doc AUTHORS ChangeLog* COPYRIGHT FAQ NEWS READ_ME zippy.README
+%files -f %{name}.lang
+%doc AUTHORS ChangeLog* COPYRIGHT NEWS zippy.README
 %doc *.txt *.html
 %config(noreplace) %{_sysconfdir}/X11/app-defaults/XBoard
-%{_datadir}/applications/mandriva-%{name}.desktop
 %{_gamesbindir}/*
 %{_mandir}/man?/*
 %{_infodir}/*.info*
+%{_datadir}/applications/*.desktop
+%{_datadir}/games/%{name}/sounds/*
+%{_datadir}/games/%{name}/bitmaps/
+%{_datadir}/games/%{name}/pixmaps/
+%{_datadir}/mime/packages/xboard.xml
+%{_sysconfdir}/%{name}.conf
+%{_iconsdir}/hicolor/*/apps/*.*
