@@ -1,26 +1,21 @@
 # Debug package is empty and rpmlint rejects build
 %define _enable_debug_packages %{nil}
 %define debug_package %{nil}
+%define _disable_rebuild_configure 1
+%define _disable_lto 1
 
 Summary:	An X Window System graphical chessboard
 Name:		xboard
-Version:	4.2.7
-Release:	25
+Version:	4.8.0
+Release:	1
 Group:		Games/Boards
 URL:		http://www.gnu.org/software/xboard/
 License:	BSD-like and GPLv2+
 
-Source:		ftp://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.bz2
+Source:		http://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
 Source1:	xboard.sh.bz2
 Source2:	xboard-pxboard.man.bz2
 Source3:	XBoard.ad.bz2
-Patch0:		xboard-4.2.7-entry.patch
-Patch1:		xboard-4.2.7-cmail-quote.patch
-Patch2:		xboard-4.2.7-lowtime-warning.patch
-Patch3:		xboard-4.2.7-xvt.patch
-Patch4:		xboard-4.2.7-xtname.patch
-Patch5:		xboard-4.2.7-hilight-threatened-pieces.patch
-Patch6:		xboard-4.2.7-str-fmt.patch
 
 Requires:	chessengine
 Conflicts:	gnuchess <= 5.06
@@ -36,13 +31,7 @@ with chess via email, or with your own saved games.
 
 %prep
 %setup -q 
-%patch0 -p1 -b .info-entry
-%patch1 -p1 -b .quote
-%patch2 -p1 -b .lowtime
-%patch3 -p1 -b .xvt
-%patch4 -p1 -b .xtname
-%patch5 -p1 -b .hilite
-%patch6 -p1 -b .str
+%apply_patches
 
 chmod 0644 ChangeLog*
 
@@ -68,27 +57,20 @@ bzip2 -dc %{SOURCE2} > %{buildroot}%{_mandir}/man6/pxboard.6
 mkdir -p %{buildroot}%{_sysconfdir}/X11/app-defaults
 bzip2 -dc %{SOURCE3} > %{buildroot}%{_sysconfdir}/X11/app-defaults/XBoard
 
-#menu
-mkdir -p %{buildroot}%{_datadir}/applications
-cat > %{buildroot}%{_datadir}/applications/mandriva-%{name}.desktop << EOF
-[Desktop Entry]
-Name=XBoard
-Comment=GUI chessboard game
-Exec=%{_gamesbindir}/xboard
-Icon=strategy_section
-Terminal=false
-Type=Application
-Categories=Game;BoardGame;
-EOF
-
 # remove useless files
 rm -f %{buildroot}%{_infodir}/dir
 
-%files
-%doc AUTHORS ChangeLog* COPYRIGHT FAQ NEWS READ_ME zippy.README
+%find_lang %{name}
+
+%files -f %{name}.lang
+%doc AUTHORS ChangeLog* COPYRIGHT NEWS README zippy.README
 %doc *.txt *.html
 %config(noreplace) %{_sysconfdir}/X11/app-defaults/XBoard
-%{_datadir}/applications/mandriva-%{name}.desktop
+%config(noreplace) %{_sysconfdir}/xboard.conf
+%{_datadir}/applications/*.desktop
+%{_datadir}/games/%{name}
+%{_datadir}/icons/*/*/*/%{name}.*
+%{_datadir}/mime/packages/%{name}.xml
 %{_gamesbindir}/*
 %{_mandir}/man?/*
 %{_infodir}/*.info*
