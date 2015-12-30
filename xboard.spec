@@ -23,7 +23,7 @@ BuildRequires:	flex
 BuildRequires:	groff-for-man
 BuildRequires:	pkgconfig(xaw7)
 BuildRequires:	pkgconfig(xpm)
-BuildRequires:	makeinfo
+BuildRequires:	texinfo
 
 %description
 Xboard is an X Window System based graphical chessboard which can be used with
