@@ -23,6 +23,8 @@ BuildRequires:	flex
 BuildRequires:	groff-for-man
 BuildRequires:	pkgconfig(xaw7)
 BuildRequires:	pkgconfig(xpm)
+BuildRequires:	pkgconfig(cairo)
+BuildRequires:	pkgconfig(librsvg-2.0)
 BuildRequires:	texinfo
 
 %description
