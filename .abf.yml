@@ -2,6 +2,6 @@ removed_sources:
   xboard-4.2.7.tar.bz2: b8eec86cccb72f1bb3453fd605de127d5d4587ce
 sources:
   XBoard.ad.bz2: 8140049278fee3faa1e424062466451bb3f99f94
-  xboard-4.8.0.tar.gz: b44de53d704c2d524a3dc79a0c1afdd7414a3ff3
+  xboard-4.9.1.tar.gz: 9bcd31bb88877f56dff77b16e3d0cfd34cc18be0
   xboard-pxboard.man.bz2: 162a2e7d2c734c25c29bcef0b70bc1e3869a4165
   xboard.sh.bz2: a1a28e13db4eefc5b32de0e64bcdf68534a45df2
