@@ -25,6 +25,7 @@ BuildRequires:	pkgconfig(xaw7)
 BuildRequires:	pkgconfig(xpm)
 BuildRequires:	pkgconfig(cairo)
 BuildRequires:	pkgconfig(librsvg-2.0)
+BuildRequires:	pkgconfig(pangocairo)
 BuildRequires:	texinfo
 
 %description
