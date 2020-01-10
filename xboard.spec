@@ -36,7 +36,7 @@ with chess via email, or with your own saved games.
 
 %prep
 %setup -q 
-%apply_patches
+%autopatch -p1
 
 chmod 0644 ChangeLog*
 
