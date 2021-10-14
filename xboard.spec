@@ -1,6 +1,4 @@
-# Debug package is empty and rpmlint rejects build
-%define _enable_debug_packages %{nil}
-%define debug_package %{nil}
+%define _empty_manifest_terminate_build 0
 %define _disable_rebuild_configure 1
 %define _disable_lto 1
 
@@ -9,7 +7,7 @@
 Summary:	An X Window System graphical chessboard
 Name:		xboard
 Version:	4.9.1
-Release:	2
+Release:	3
 Group:		Games/Boards
 URL:		http://www.gnu.org/software/xboard/
 License:	BSD-like and GPLv2+
