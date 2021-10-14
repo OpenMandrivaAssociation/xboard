@@ -4,6 +4,8 @@
 %define _disable_rebuild_configure 1
 %define _disable_lto 1
 
+%global optflags %{optflags} -fcommon
+
 Summary:	An X Window System graphical chessboard
 Name:		xboard
 Version:	4.9.1
