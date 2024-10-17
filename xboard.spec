@@ -9,7 +9,7 @@ Name:		xboard
 Version:	4.9.1
 Release:	4
 Group:		Games/Boards
-URL:		http://www.gnu.org/software/xboard/
+URL:		https://www.gnu.org/software/xboard/
 License:	BSD-like and GPLv2+
 
 Source:		http://ftp.gnu.org/pub/gnu/%{name}/%{name}-%{version}.tar.gz
