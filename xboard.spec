@@ -19,6 +19,11 @@ Source3:	XBoard.ad.bz2
 
 Requires:	chessengine
 Conflicts:	gnuchess <= 5.06
+BuildRequires:	autoconf
+BuildRequires:	automake
+BuildRequires:	libtool-base
+BuildRequires:	slibtool
+BuildRequires:	make
 BuildRequires:	flex
 BuildRequires:	groff-for-man
 BuildRequires:	pkgconfig(xaw7)
